@@ -1,0 +1,25 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+<div *ngIf="todos$ | async as todos">
+  <div *ngFor="let todo of todos">
+    <span *ngIf="todo.id <= 10">{{ todo.title }}</span>
+  </div>
+</div>
+<br />
+<div *ngIf="users$ | async as users">
+  <div *ngFor="let user of users">
+    <span *ngIf="user.id <= 10">{{ user.name }}</span>
+  </div>
+</div>
+<br />
+<div *ngIf="todosWithUsers$ | async as todosUsers">
+  <div *ngFor="let t of todosUsers">
+    <span>{{ t.userId }}</span>
+  </div>
+</div>
+<br />
+<div *ngIf="usersWithTodos$ | async as usersTodos">
+  <div *ngFor="let u of usersTodos">
+    <span>{{ u }}</span>
+  </div>
+</div>
