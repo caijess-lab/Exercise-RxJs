@@ -1,3 +1,4 @@
+import { Post } from './post';
 import { Todo } from './todo';
 
 export interface User {
@@ -10,6 +11,7 @@ export interface User {
   website: string;
   company: UserCompany;
   todos: Todo[];
+  posts: Post[];
 }
 
 export interface UserCompany {

@@ -5,13 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoService } from './todo.service';
-import { UserService } from './user.service';
+import { AppService } from './services/app.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],
-  providers: [TodoService, UserService],
+  providers: [AppService],
 })
 export class AppModule {}

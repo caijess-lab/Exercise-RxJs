@@ -1,3 +1,15 @@
 p {
   font-family: Lato;
 }
+.accordion {
+  margin-bottom: 20px;
+}
+.user-header {
+  height: 50px;
+  background-color: #5f91b1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
