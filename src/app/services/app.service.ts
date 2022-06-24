@@ -10,6 +10,8 @@ export class AppService {
   todosUrl: string = 'https://jsonplaceholder.typicode.com/todos';
   usersUrl: string = 'https://jsonplaceholder.typicode.com/users';
   postsUrl: string = 'https://jsonplaceholder.typicode.com/posts';
+  commentsUrl: string = 'https://jsonplaceholder.typicode.com/comments';
+
   constructor(private http: HttpClient) {}
 
   todos$ = this.http.get<Todo[]>(this.todosUrl).pipe(
@@ -28,6 +30,13 @@ export class AppService {
   );
 
   posts$ = this.http.get<Post[]>(this.postsUrl).pipe(
+    tap((data) => {
+      console.log(JSON.stringify(data[0]));
+    }),
+    catchError(() => of([]))
+  );
+
+  comments$ = this.http.get<Post[]>(this.commentsUrl).pipe(
     tap((data) => {
       console.log(JSON.stringify(data[0]));
     }),
@@ -65,6 +74,18 @@ export class AppService {
     })
   );
 
+  postsWithComments$ = combineLatest([this.posts$, this.comments$]).pipe(
+    map(([posts, comments]) => {
+      return posts.map(
+        (p) =>
+          ({
+            ...p,
+            comments: comments.filter((c) => c.postId === p.id),
+          } as unknown as Post)
+      );
+    })
+  );
+
   // on veut ranger chaque todos par user et ajouter leurs posts
   usersWithTodosAndPosts$ = combineLatest([
     this.usersWithTodos$,
@@ -82,6 +103,26 @@ export class AppService {
     tap((data) => {
       console.log('posts');
       console.table(data);
+    })
+  );
+
+  // todos, posts et comments par user
+  usersWithTodosAndPostsAndComments$ = combineLatest([
+    this.usersWithTodos$,
+    this.postsWithComments$,
+  ]).pipe(
+    map(([usersTodos, postsComments]) => {
+      return usersTodos.map(
+        (u) =>
+          ({
+            ...u,
+            posts: postsComments.filter((p) => p.userId === u.id),
+          } as unknown as User)
+      );
+    }),
+    tap((data) => {
+      console.log('comments');
+      console.table(data[0].posts[0].comments);
     })
   );
 }
