@@ -1,11 +1,5 @@
-import { Component, VERSION } from '@angular/core';
-import { combineLatest } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
-import { Todo } from './models/todo';
-import { TodoService } from './services/todo.service';
-import { User } from './models/user';
-import { UserService } from './services/user.service';
 
 @Component({
   selector: 'my-app',
