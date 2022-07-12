@@ -26,5 +26,33 @@ export class AppComponent {
   usersWithTodosAndPostsAndComments$ =
     this.appService.usersWithTodosAndPostsAndComments$;
 
+  // menus
+  menus = [
+    {
+      title: 'Liste des tâches',
+      url: '/todos',
+    },
+    {
+      title: 'Liste des utilisateurs',
+      url: '/users',
+    },
+    {
+      title: 'Liste des tâches par utilisateurs',
+      url: '/todosWithUsers',
+    },
+    {
+      title: 'Liste des utilisateurs par tâches',
+      url: '/usersWithTodos',
+    },
+    {
+      title: 'Liste des utilisateurs avec tâches et articles',
+      url: '/usersWithTodosAndPosts',
+    },
+    {
+      title: 'Liste des utilisateurs avec tâches, articles et commentaires',
+      url: '/usersWithTodosAndPostsAndComments',
+    },
+  ];
+
   constructor(public appService: AppService) {}
 }
