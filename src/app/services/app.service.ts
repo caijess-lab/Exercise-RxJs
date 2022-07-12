@@ -32,6 +32,7 @@ export class AppService {
   posts$ = this.http.get<Post[]>(this.postsUrl).pipe(
     tap((data) => {
       console.log(JSON.stringify(data[0]));
+      data.length = 6;
     }),
     catchError(() => of([]))
   );
@@ -125,4 +126,39 @@ export class AppService {
       console.table(data[0].posts[0].comments);
     })
   );
+
+  menus = [
+    {
+      title: 'Accueil',
+      url: '/accueil',
+    },
+    {
+      title: 'Liste des tâches',
+      url: '/todos',
+    },
+    {
+      title: 'Liste des utilisateurs',
+      url: '/users',
+    },
+    {
+      title: 'Liste des tâches par utilisateurs',
+      url: '/todosWithUsers',
+    },
+    {
+      title: 'Liste des utilisateurs par tâches',
+      url: '/usersWithTodos',
+    },
+    {
+      title: 'Liste des utilisateurs avec tâches et articles',
+      url: '/usersWithTodosAndPosts',
+    },
+    {
+      title: 'Liste des utilisateurs avec tâches, articles et commentaires',
+      url: '/usersWithTodosAndPostsAndComments',
+    },
+    {
+      title: 'Tableau insertion de lignes',
+      url: '/tableauinsert',
+    },
+  ];
 }

@@ -13,8 +13,11 @@ import { CommonModule } from '@angular/common';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { UserWithTodoAndPostComponent } from './components/user-with-todo-and-post/user-with-todo-and-post.component';
 import { UserWithTodoAndPostAndCommentComponent } from './components/user-with-todo-and-post-and-comment/user-with-todo-and-post-and-comment.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
+import { TableauInsertComponent } from './components/tableau-insert/tableau-insert.component';
 
 const routes: Routes = [
+  { path: 'accueil', component: AccueilComponent },
   { path: 'todos', component: TodoListComponent },
   { path: 'users', component: UserListComponent },
   { path: 'todosWithUsers', component: TodoByUserComponent },
@@ -22,6 +25,10 @@ const routes: Routes = [
   {
     path: 'usersWithTodosAndPostsAndComments',
     component: UserWithTodoAndPostAndCommentComponent,
+  },
+  {
+    path: 'tableauinsert',
+    component: TableauInsertComponent,
   },
 ];
 
@@ -41,6 +48,8 @@ const routes: Routes = [
     TodoByUserComponent,
     UserWithTodoAndPostComponent,
     UserWithTodoAndPostAndCommentComponent,
+    AccueilComponent,
+    TableauInsertComponent,
   ],
   bootstrap: [AppComponent],
   providers: [AppService],

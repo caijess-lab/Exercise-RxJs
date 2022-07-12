@@ -34,3 +34,8 @@ p {
 .comment-content {
   font-size: 12px;
 }
+
+.accueil {
+  display: flex;
+  flex-direction: row;
+}
