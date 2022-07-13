@@ -15,12 +15,14 @@ import { UserWithTodoAndPostComponent } from './components/user-with-todo-and-po
 import { UserWithTodoAndPostAndCommentComponent } from './components/user-with-todo-and-post-and-comment/user-with-todo-and-post-and-comment.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { TableauInsertComponent } from './components/tableau-insert/tableau-insert.component';
+import { UserByTodoComponent } from './components/user-by-todo/user-by-todo.component';
 
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent },
   { path: 'todos', component: TodoListComponent },
   { path: 'users', component: UserListComponent },
   { path: 'todosWithUsers', component: TodoByUserComponent },
+  { path: 'usersWithTodos', component: UserByTodoComponent },
   { path: 'usersWithTodosAndPosts', component: UserWithTodoAndPostComponent },
   {
     path: 'usersWithTodosAndPostsAndComments',
@@ -50,6 +52,7 @@ const routes: Routes = [
     UserWithTodoAndPostAndCommentComponent,
     AccueilComponent,
     TableauInsertComponent,
+    UserByTodoComponent,
   ],
   bootstrap: [AppComponent],
   providers: [AppService],
