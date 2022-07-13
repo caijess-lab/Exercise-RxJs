@@ -2,11 +2,11 @@
   <div
     *ngFor="let menu of menus"
     class="card"
-    style="width: 150px;height: 100px;"
+    style="background-color: {{ menu.color }};"
     (click)="goToScreen(menu.url)"
   >
     <div class="card-body">
-      <h3 class="card-title">{{ menu.title }}</h3>
+      <h5 class="card-title">{{ menu.title }}</h5>
     </div>
   </div>
 </div>

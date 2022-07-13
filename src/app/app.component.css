@@ -34,12 +34,11 @@ p {
 .comment-content {
   font-size: 12px;
 }
-
-.accueil {
-  display: flex;
-  flex-direction: row;
+.container {
+  margin-top: 10px;
 }
 
-tr.red {
-  color: red;
+a {
+  color: #fff;
+  text-decoration: none;
 }

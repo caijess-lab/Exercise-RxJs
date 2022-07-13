@@ -15,9 +15,9 @@ export class AccueilComponent {
   menus;
 
   constructor(public router: Router, public appService: AppService) {
-    console.log(this.appService.menus);
     let l_menus = [...appService.menus];
     l_menus.splice(0, 1);
     this.menus = l_menus;
+    console.log(this.menus);
   }
 }

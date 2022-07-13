@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BaseComponent } from '../../classes/base-component';
 import { AppService } from '../../services/app.service';
 
 @Component({
@@ -6,7 +8,7 @@ import { AppService } from '../../services/app.service';
   templateUrl: './tableau-insert.component.html',
   styleUrls: ['./tableau-insert.component.css'],
 })
-export class TableauInsertComponent {
+export class TableauInsertComponent extends BaseComponent {
   compteurs: any = [
     {
       libelle: 'Heures travaillées',
@@ -278,5 +280,7 @@ export class TableauInsertComponent {
     }
   }
 
-  constructor(public appService: AppService) {}
+  constructor(public appService: AppService, router: Router) {
+    super(router, appService);
+  }
 }

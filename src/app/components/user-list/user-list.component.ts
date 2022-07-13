@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BaseComponent } from '../../classes/base-component';
 import { AppService } from '../../services/app.service';
 
 @Component({
@@ -6,7 +8,9 @@ import { AppService } from '../../services/app.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
-export class UserListComponent {
+export class UserListComponent extends BaseComponent {
   users$ = this.appService.users$;
-  constructor(public appService: AppService) {}
+  constructor(public appService: AppService, router: Router) {
+    super(router, appService);
+  }
 }

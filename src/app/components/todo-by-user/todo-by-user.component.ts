@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BaseComponent } from '../../classes/base-component';
 import { AppService } from '../../services/app.service';
 
 @Component({
@@ -6,7 +8,9 @@ import { AppService } from '../../services/app.service';
   templateUrl: './todo-by-user.component.html',
   styleUrls: ['./todo-by-user.component.css'],
 })
-export class TodoByUserComponent {
+export class TodoByUserComponent extends BaseComponent {
   todosWithUsers$ = this.appService.todosWithUsers$;
-  constructor(public appService: AppService) {}
+  constructor(public appService: AppService, public router: Router) {
+    super(router, appService);
+  }
 }

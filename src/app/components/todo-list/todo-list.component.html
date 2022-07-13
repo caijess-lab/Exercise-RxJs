@@ -1,4 +1,5 @@
 <!-- LIST OF TODOS -->
+<h1>{{title}}</h1>
 <div *ngIf="todos$ | async as todos">
   <div *ngFor="let todo of todos">
     <span *ngIf="todo.id <= 10">{{ todo.title }}</span>
