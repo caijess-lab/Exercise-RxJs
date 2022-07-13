@@ -220,50 +220,53 @@ export class TableauInsertComponent extends BaseComponent {
     a_event.stopPropagation();
 
     if (!a_row.showDetail && a_openClose === 'open') {
+      a_row.showDetail = true;
+
       // récupération de l'index de la ligne sous laquelle insérer ou supprimer des lignes
       let l_index = this.compteurs.findIndex(
         (item) => item.idTypeCompteur === a_row.idTypeCompteur
       );
-      // insertion
-      a_row.showDetail = true;
-      let l_sousListe: any = [
-        {
-          libelle: 'Heures bis',
-          rang: 10,
-          isMiseEnValeur: '0',
-          isCommentModifiable: '0',
-          isModifiable: '0',
-          semaine27: 7,
-          semaine28: 8,
-          semaine26: 2,
-          isRegule: '0',
-          id: null,
-          comment: null,
-          mois: 50.5,
-          isDetailPossible: '0',
-          refTypeCompteur: a_row.idTypeCompteur,
-          showDetail: null,
-        },
-        {
-          libelle: 'Heures bis bis',
-          rang: 11,
-          isMiseEnValeur: '0',
-          isCommentModifiable: '0',
-          isModifiable: '0',
-          semaine27: 7,
-          semaine28: 8,
-          semaine26: 2,
-          isRegule: '0',
-          id: null,
-          comment: null,
-          mois: 52,
-          isDetailPossible: '0',
-          refTypeCompteur: a_row.idTypeCompteur,
-          showDetail: null,
-        },
-      ];
-      for (let i = l_sousListe.length - 1; i >= 0; i--) {
-        this.compteurs.splice(l_index + 1, 0, l_sousListe[i]);
+
+      if (l_index > -1) {
+        let l_sousListe: any = [
+          {
+            libelle: 'Heures bis',
+            rang: 10,
+            isMiseEnValeur: '0',
+            isCommentModifiable: '0',
+            isModifiable: '0',
+            semaine27: 7,
+            semaine28: 8,
+            semaine26: 2,
+            isRegule: '0',
+            id: null,
+            comment: null,
+            mois: 50.5,
+            isDetailPossible: '0',
+            refTypeCompteur: a_row.idTypeCompteur,
+            showDetail: null,
+          },
+          {
+            libelle: 'Heures bis bis',
+            rang: 11,
+            isMiseEnValeur: '0',
+            isCommentModifiable: '0',
+            isModifiable: '0',
+            semaine27: 7,
+            semaine28: 8,
+            semaine26: 2,
+            isRegule: '0',
+            id: null,
+            comment: null,
+            mois: 52,
+            isDetailPossible: '0',
+            refTypeCompteur: a_row.idTypeCompteur,
+            showDetail: null,
+          },
+        ];
+        for (let i = l_sousListe.length - 1; i >= 0; i--) {
+          this.compteurs.splice(l_index + 1, 0, l_sousListe[i]);
+        }
       }
     } else {
       a_row.showDetail = false;
