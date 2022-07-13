@@ -7,7 +7,7 @@ import { AppService } from '../../services/app.service';
   styleUrls: ['./tableau-insert.component.css'],
 })
 export class TableauInsertComponent {
-  compteurs = [
+  compteurs: any = [
     {
       libelle: 'Heures travaillées',
       rang: 10,
@@ -24,7 +24,6 @@ export class TableauInsertComponent {
       isDetailPossible: '1',
       idTypeCompteur: 5,
       showDetail: null,
-      refCodeOrigine: null,
     },
     {
       libelle: 'Heures assimilées',
@@ -216,7 +215,6 @@ export class TableauInsertComponent {
   ];
 
   public getDetail(a_event: MouseEvent, a_row: any, a_openClose: string) {
-    console.log(a_row);
     a_event.stopPropagation();
 
     if (!a_row.showDetail && a_openClose === 'open') {
@@ -224,10 +222,9 @@ export class TableauInsertComponent {
       let l_index = this.compteurs.findIndex(
         (item) => item.idTypeCompteur === a_row.idTypeCompteur
       );
-      console.log('index: ' + l_index);
       // insertion
       a_row.showDetail = true;
-      let l_sousListe = [
+      let l_sousListe: any = [
         {
           libelle: 'Heures bis',
           rang: 10,
@@ -238,13 +235,12 @@ export class TableauInsertComponent {
           semaine28: 8,
           semaine26: 2,
           isRegule: '0',
-          id: 1526,
+          id: null,
           comment: null,
           mois: 50.5,
           isDetailPossible: '0',
-          idTypeCompteur: null,
+          refTypeCompteur: a_row.idTypeCompteur,
           showDetail: null,
-          refCodeOrigine: a_row.idTypeCompteur,
         },
         {
           libelle: 'Heures bis bis',
@@ -256,31 +252,29 @@ export class TableauInsertComponent {
           semaine28: 8,
           semaine26: 2,
           isRegule: '0',
-          id: 1527,
+          id: null,
           comment: null,
           mois: 52,
           isDetailPossible: '0',
-          idTypeCompteur: null,
+          refTypeCompteur: a_row.idTypeCompteur,
           showDetail: null,
-          refCodeOrigine: a_row.idTypeCompteur,
         },
       ];
-
-      for (let ssElem of l_sousListe) {
-        this.compteurs.splice(l_index + 1, 0, ssElem);
+      for (let i = l_sousListe.length - 1; i >= 0; i--) {
+        this.compteurs.splice(l_index + 1, 0, l_sousListe[i]);
       }
     } else {
       a_row.showDetail = false;
 
       let l_lignes = this.compteurs.filter(
-        (item) => item.refCodeOrigine === a_row.idTypeCompteur
+        (item) => item.refTypeCompteur === a_row.idTypeCompteur
       );
-      for (let l_ligne of l_lignes) {
-        this.compteurs.splice(
-          this.compteurs.findIndex((item) => item.id === l_ligne.id),
-          1
-        );
-      }
+      this.compteurs.splice(
+        this.compteurs.findIndex(
+          (item) => item.refTypeCompteur === a_row.idTypeCompteur
+        ),
+        l_lignes.length
+      );
     }
   }
 
