@@ -11,14 +11,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of compteurs">
+    <tr
+      *ngFor="let row of compteurs"
+      [ngClass]="{
+        red: row.refCodeOrigine !== undefined && row.refCodeOrigine !== null
+      }"
+    >
       <td>
-        <a *ngIf="!row.showDetail" (click)="getDetail($event, row, 'open')"
+        <a
+          *ngIf="!row.showDetail && row.isDetailPossible === '1'"
+          (click)="getDetail($event, row, 'open')"
           >Ouvrir</a
         >
       </td>
       <td>
-        <a *ngIf="row.showDetail" (click)="getDetail($event, row, 'close')"
+        <a
+          *ngIf="row.showDetail && row.isDetailPossible === '1'"
+          (click)="getDetail($event, row, 'close')"
           >Fermer</a
         >
       </td>

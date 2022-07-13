@@ -39,3 +39,7 @@ p {
   display: flex;
   flex-direction: row;
 }
+
+tr.red {
+  color: red;
+}
